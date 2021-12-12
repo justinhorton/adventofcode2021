@@ -1,5 +1,5 @@
-use std::cmp::Ordering;
 use crate::days::template::Solution;
+use std::cmp::Ordering;
 use std::collections::HashMap;
 
 pub struct Day05 {}
@@ -49,6 +49,7 @@ struct LineSegment {
     start: Point,
     end: Point,
 }
+
 impl LineSegment {
     fn horiz_vert_points(&self) -> Vec<Point> {
         if self.start.x == self.end.x || self.start.y == self.end.y {
@@ -91,6 +92,7 @@ impl LineSegment {
         }
     }
 }
+
 #[derive(Debug, Clone, Hash, PartialEq, Eq)]
 struct Point {
     x: i64,
@@ -109,7 +111,7 @@ impl Point {
 
 #[cfg(test)]
 mod tests {
-    use crate::days::day05::{Day05, LineSegment, Point};
+    use crate::days::day05::Day05;
     use crate::Solution;
 
     const SAMPLE_1: &'static str = "0,9 -> 5,9

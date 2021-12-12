@@ -37,6 +37,7 @@ fn get_day_impl(day_int: usize) -> Box<dyn Solution> {
         3 => Box::new(days::day03::Day03 {}),
         4 => Box::new(days::day04::Day04 {}),
         5 => Box::new(days::day05::Day05 {}),
+        6 => Box::new(days::day06::Day06 {}),
         7 => Box::new(days::day07::Day07 {}),
         8 => Box::new(days::day08::Day08 {}),
         10 => Box::new(days::day10::Day10 {}),
