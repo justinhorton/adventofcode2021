@@ -2,12 +2,12 @@ use crate::days::template::Solution;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 
-pub struct Day08 {}
+pub struct Day09 {}
 
 type Basin = usize;
 type Tile = usize;
 
-impl Solution for Day08 {
+impl Solution for Day09 {
     fn part1(&self, input: &str) -> String {
         let (width, parsed_input) = Self::parse_input(input);
         let total_len = parsed_input.len();
@@ -75,7 +75,7 @@ impl Solution for Day08 {
     }
 }
 
-impl Day08 {
+impl Day09 {
     fn parse_input(input: &str) -> (usize, Vec<usize>) {
         let trimmed = input.trim();
         let width = trimmed.lines().next().unwrap().len();
@@ -154,7 +154,7 @@ impl Day08 {
 
 #[cfg(test)]
 mod tests {
-    use crate::days::day08::Day08;
+    use crate::days::day09::Day09;
     use crate::Solution;
 
     const SAMPLE_1: &'static str = "2199943210
@@ -165,11 +165,11 @@ mod tests {
 
     #[test]
     fn test_sample_part1() {
-        assert_eq!(15.to_string(), Day08 {}.part1(SAMPLE_1))
+        assert_eq!(15.to_string(), Day09 {}.part1(SAMPLE_1))
     }
 
     #[test]
     fn test_sample_part2() {
-        assert_eq!(1134.to_string(), Day08 {}.part2(SAMPLE_1));
+        assert_eq!(1134.to_string(), Day09 {}.part2(SAMPLE_1));
     }
 }

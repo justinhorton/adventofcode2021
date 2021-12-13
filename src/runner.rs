@@ -39,7 +39,7 @@ fn get_day_impl(day_int: usize) -> Box<dyn Solution> {
         5 => Box::new(days::day05::Day05 {}),
         6 => Box::new(days::day06::Day06 {}),
         7 => Box::new(days::day07::Day07 {}),
-        8 => Box::new(days::day08::Day08 {}),
+        9 => Box::new(days::day09::Day09 {}),
         10 => Box::new(days::day10::Day10 {}),
         d => panic!("Day {} not yet supported", d),
     }
