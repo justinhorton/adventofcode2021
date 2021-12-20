@@ -1,7 +1,6 @@
 use crate::Solution;
 use itertools::{Itertools, MinMaxResult};
 use std::collections::HashMap;
-use std::fmt::format;
 
 pub struct Day14 {}
 
@@ -9,7 +8,7 @@ impl Solution for Day14 {
     fn part1(&self, input: &str) -> String {
         let polymer_formula = parse_input(input);
 
-        let formula_result = (0..10).fold(String::from(polymer_formula.template), |acc, _i| {
+        let formula_result = (0..10).fold(polymer_formula.template, |acc, _i| {
             apply_insertions(&acc, &polymer_formula.insertion_rules)
         });
 
@@ -37,8 +36,7 @@ impl Solution for Day14 {
         // number of occurrences of each 2-character sequence
         let mut seq_map: HashMap<String, usize> =
             initial_pairs.iter().fold(HashMap::new(), |mut map, &pair| {
-                *map.entry(format!("{}{}", *pair.0, *pair.1))
-                    .or_insert(0) += 1;
+                *map.entry(format!("{}{}", *pair.0, *pair.1)).or_insert(0) += 1;
                 map
             });
         // number of occurrences of each character
@@ -61,7 +59,7 @@ impl Solution for Day14 {
                 *char_counts.entry(*inserted_ch).or_insert(0) += count;
 
                 // sequence count increases according to the would-be character pairs
-                let new_seq1: String = format!("{}{}", seq.chars().nth(0).unwrap(), inserted_ch);
+                let new_seq1: String = format!("{}{}", seq.chars().next().unwrap(), inserted_ch);
                 let new_seq2: String = format!("{}{}", inserted_ch, seq.chars().nth(1).unwrap());
                 *cur_seq_map.entry(new_seq1).or_insert(0) += count;
                 *cur_seq_map.entry(new_seq2).or_insert(0) += count;
@@ -79,7 +77,7 @@ impl Solution for Day14 {
     }
 }
 
-fn apply_insertions(template: &String, rules: &HashMap<String, char>) -> String {
+fn apply_insertions(template: &str, rules: &HashMap<String, char>) -> String {
     let chars = template.chars().collect_vec();
     let pairs = chars.iter().zip(chars[1..].iter()).collect_vec();
 
@@ -109,7 +107,7 @@ fn parse_input(input: &str) -> PolymerFormula {
         .unwrap()
         .lines()
         .map(|line| line.split_once(" -> ").unwrap())
-        .map(|it| (it.0.to_string(), it.1.chars().nth(0).unwrap()))
+        .map(|it| (it.0.to_string(), it.1.chars().next().unwrap()))
         .collect();
 
     PolymerFormula {
