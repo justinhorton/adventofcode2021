@@ -5,6 +5,8 @@ use std::path::PathBuf;
 mod days;
 
 fn main() {
+    env_logger::init();
+
     let app = App::new("AoC Runner")
         .version("1.0")
         .about("Runs AoC 2021 solutions")
@@ -47,6 +49,7 @@ fn get_day_impl(day_int: usize) -> Box<dyn Solution> {
         13 => Box::new(days::day13::Day13 {}),
         14 => Box::new(days::day14::Day14 {}),
         15 => Box::new(days::day15::Day15 {}),
+        16 => Box::new(days::day16::Day16 {}),
         d => panic!("Day {} not yet supported", d),
     }
 }
