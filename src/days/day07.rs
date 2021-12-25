@@ -32,6 +32,7 @@ impl Day07 {
             .split(',')
             .map(|it| it.parse::<i32>().unwrap())
             .sorted()
+            .collect_vec()
     }
 
     fn total_cost_for_target(sorted: &[i32], target: &i32) -> i32 {

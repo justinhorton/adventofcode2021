@@ -107,7 +107,7 @@ impl BingoBoard {
                 flattened_marks
                     .iter()
                     .skip(col_i)
-                    .step(self.size)
+                    .step_by(self.size)
                     .all(|it| *it)
             })
     }
